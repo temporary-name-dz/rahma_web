@@ -66,29 +66,7 @@ const SearchContainer = styled.div`
     }
   }
 
-  .accuracy-container {
-    position: relative;
-
-    .static {
-      position: absolute;
-      background-color: var(--white);
-
-      &:hover {
-        opacity: 0;
-      }
-    }
-  }
   .btn {
-    display: inline-block;
-    height: ${height};
-    width: 151px;
-    font-size: 1.2rem;
-    color: var(--white);
-    background-color: var(--white);
-    border: none;
-    border-top-right-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-    cursor: pointer;
     &-search {
       display: flex;
       align-items: center;
@@ -98,11 +76,6 @@ const SearchContainer = styled.div`
       &:hover {
         background-color: var(--colors-accent-40);
       }
-    }
-    &-locate {
-      position: absolute;
-      inset: 0 0 auto auto;
-      width: max-content;
     }
     &-img {
       margin-left: 1rem;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 const HeroContainer = styled.div`
   position: relative;
   width: 100vw;
-  height: calc(100vh - 89px);
+  height: var(--section-height);
   color: var(--white);
   .hero-bg {
     position: absolute;

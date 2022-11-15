@@ -43,6 +43,19 @@ li {
   color: var(--white);
 }
 
+.btn {
+  display: inline-block;
+  height: 50px;
+  width: 151px;
+  font-size: 1.2rem;
+  color: var(--white);
+  background-color: var(--white);
+  border: none;
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  cursor: pointer;
+}
+
 /* TODO: add dark/light theme  */
 @media (prefers-color-scheme: dark) {
   html {
@@ -66,6 +79,8 @@ li {
   --primary-text: #15141a;
   --secondary-text: #5b5b66;
   --font-size: 13px;
+  --navbar-height: 89px;
+  --section-height: calc(100vh - var(--navbar-height));
 
   --border-radius: 4px;
   --border-radius-m: 14px;
