@@ -7,7 +7,7 @@ export default function PharmaciesPage({ params }) {
   console.log(params);
   return (
     <PharmaciesWrap>
-      <PharmaciesList list={params.city}></PharmaciesList>
+      <PharmaciesList city={params.city}></PharmaciesList>
       <MapContainer></MapContainer>
     </PharmaciesWrap>
   );
