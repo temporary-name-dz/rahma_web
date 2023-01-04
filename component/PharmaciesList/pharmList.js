@@ -69,4 +69,14 @@ export default [
     hours: "Sat-fri,9AM-8:30PM",
     ownerId: 1,
   },
+  {
+    pharmID: 8,
+    name: "Pharmacie ANWAR ",
+    address: "80 LOTTISEMENT SOUK",
+    latitude: 34.94846531385441,
+    longitude: -1.3709642608202648,
+    status: "Open",
+    hours: "Sat-fri,9AM-8:30PM",
+    ownerId: 1,
+  },
 ];

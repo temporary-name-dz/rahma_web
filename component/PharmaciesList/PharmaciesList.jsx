@@ -1,7 +1,9 @@
-import { ListWrap, ListTitle, ListContent } from "./pharmaciesList.styled";
-import placeholder from "../../public/placeholder.jpg";
+import { useState } from "react";
 import Card from "../Card/Card";
-import list from "./pharmList";
+import ListPaginate from "../Common/Paginate";
+import { ListContent, ListTitle, ListWrap } from "./pharmaciesList.styled";
+import listPharm from "./pharmList";
+
 async function getPharmacies(city) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${city}`, {
     next: { revalidate: 10 }, // this tells fetch to regenerate page on server if it is older then 10 seconds !!!
@@ -15,6 +17,14 @@ async function getPharmacies(city) {
 export default function PharmaciesList({ city }) {
   // const Pharmacies = await getPharmacies(params.city);
   const [commune, daira] = city.split("_");
+
+  // TODO: Add me to the global state
+  const [list, setList] = useState(listPharm);
+  const [paginatedList, setPaginatedList] = useState(list);
+
+  // TODO: decide if we give the user the right to set how much we show pharmacies per page
+  // TODO: Add me to the global state
+  const perPage = 6;
 
   if (!list) {
     return (
@@ -34,10 +44,19 @@ export default function PharmaciesList({ city }) {
           </h1>
         </ListTitle>
         <ListContent>
-          {list.map((pharmacy) => (
-            <Card key={pharmacy.pharmID} data={pharmacy} city={commune} />
+          {paginatedList.map((pharmacy, index) => (
+            <Card
+              key={`${pharmacy.pharmID}${index}`}
+              data={pharmacy}
+              city={commune}
+            />
           ))}
         </ListContent>
+        <ListPaginate
+          itemsList={list}
+          setPaginatedItems={setPaginatedList}
+          showPerPage={perPage}
+        />
       </ListWrap>
     );
   }

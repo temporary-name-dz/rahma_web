@@ -1,16 +1,4 @@
-import styled from "styled-components";
-
+import { Overlay as OverlayWrap } from "./Common.styled";
 export default function Overlay() {
-  return <RandomName>&nbsp;&nbsp;</RandomName>;
+  return <OverlayWrap>&nbsp;&nbsp;</OverlayWrap>;
 }
-const RandomName = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 2;
-  opacity: 0.5;
-  border-radius: var(--border-radius);
-`;
