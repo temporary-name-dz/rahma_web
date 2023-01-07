@@ -1,26 +1,13 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
-
+import { useId, useState } from "react";
 import Select from "react-select";
-import { SearchContainer } from "./search.styled";
-import LocateME from "../../LocateME/LocateME";
-
-import algeriaCities from "./algeria_cities";
-import locationIcon from "./icons8-location.gif";
-import locationIconStatic from "./icons8-location.svg";
-
+import locationIcon from "../../../public/icons8-location.gif";
+import locationIconStatic from "../../../public/icons8-location.svg";
 import searchIconStatic from "../../../public/icons8-search.svg";
-
-const options = algeriaCities.map(
-  ({ commune_name_ascii, wilaya_name_ascii, ...tmp }) => {
-    return {
-      value: `${commune_name_ascii}_${wilaya_name_ascii}`,
-      label: `${commune_name_ascii}, ${wilaya_name_ascii}`,
-    };
-  }
-);
-
+import LocateME from "../../LocateME/LocateME";
+import algeriaCitiesJSON from "./algeria_cities.json";
+import { SearchContainer } from "./search.styled";
 export default function SearchWrap(params) {
   const [selectedOption, setSelectedOption] = useState(null);
   const redirectToPharmaciesPage = (e) => {
@@ -33,6 +20,9 @@ export default function SearchWrap(params) {
       alert("Please select a City !!");
     }
   };
+
+  // to fix: Warning: Prop `id` did not match. Server: "react-select-2-live-region" Client: "react-select-3-live-region"
+  const id = useId();
 
   return (
     <SearchContainer>
@@ -50,11 +40,12 @@ export default function SearchWrap(params) {
       <form className="form" onSubmit={(e) => redirectToPharmaciesPage(e)}>
         <div className="input-container">
           <Select
+            instanceId={id}
             className="react-select-container"
             classNamePrefix="react-select"
             defaultValue={selectedOption}
             onChange={setSelectedOption}
-            options={options}
+            options={algeriaCitiesJSON}
           ></Select>
           <LocateME />
         </div>

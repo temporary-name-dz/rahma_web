@@ -51,7 +51,7 @@ export default function Paginate({
     ) {
       tmp.push(
         <button
-          key={currentLink}
+          key={`${currentLink}paginate`}
           className={currentLink === page ? "active" : ""}
           onClick={() => handlePage(currentLink)}
         >

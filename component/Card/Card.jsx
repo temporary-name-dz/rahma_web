@@ -1,10 +1,10 @@
 import Image from "next/image";
-import avatar from "../../public/icons8-customer-48.png";
-import directionsIconStatic from "../../public/icons8-data-transfer-96.png";
-import locationIconOrangeStatic from "../../public/icons8-location-orange.svg";
-import locationIconStatic from "../../public/icons8-location.svg";
-import mapIconStatic from "../../public/icons8-map-marker.svg";
-import placeholder from "../../public/placeholder.jpg";
+import avatar from "@public/icons8-customer-48.png";
+import directionsIconStatic from "@public/icons8-data-transfer-96.svg";
+import locationIconOrangeStatic from "@public/icons8-location-orange.svg";
+import locationIconStatic from "@public/icons8-location.svg";
+import mapIconStatic from "@public/icons8-map-marker.svg";
+import placeholder from "@public/placeholder.jpg";
 import Overlay from "../Common/Overlay";
 import {
   Avatar,

@@ -7,7 +7,13 @@ import SearchWrap from "./SearchWrap/SearchWrap";
 function Hero(params) {
   return (
     <HeroContainer>
-      <Image className="hero-bg" alt="hero bg" src={herobg} />
+      <Image
+        className="hero-bg"
+        alt="hero bg"
+        src={herobg}
+        width={1910}
+        height={670}
+      />
       <div className="header">
         <div className="overlay"></div>
         <Image
@@ -21,7 +27,7 @@ function Hero(params) {
           <h1 className="heading-primary">Rahma pharmacy finder</h1>
           <h6>locate and contact pharmacies on duty easily.</h6>
         </div>
-      <SearchWrap />
+        <SearchWrap />
       </div>
     </HeroContainer>
   );
