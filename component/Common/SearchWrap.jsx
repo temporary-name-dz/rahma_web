@@ -2,17 +2,24 @@
 import Image from "next/image";
 import { useId, useState } from "react";
 import Select from "react-select";
-import locationIcon from "../../../public/icons8-location.gif";
-import locationIconStatic from "../../../public/icons8-location.svg";
-import searchIconStatic from "../../../public/icons8-search.svg";
-import LocateME from "../../LocateME/LocateME";
-import algeriaCitiesJSON from "./algeria_cities.json";
-import { SearchContainer } from "./search.styled";
-export default function SearchWrap(params) {
+
+import LocateME from "../LocateME/LocateME";
+
+import algeriaCitiesJSON from "@public/algeria_cities.json";
+import locationIcon from "@public/icons8-location.gif";
+import locationIconStatic from "@public/icons8-location.svg";
+import searchIconStatic from "@public/icons8-search.svg";
+import {
+  InputContainer,
+  SearchContainer,
+  SearchContainerModal,
+} from "./Common.styled";
+
+export default function SearchWrap({ modal, visible = true }) {
   const [selectedOption, setSelectedOption] = useState(null);
+
   const redirectToPharmaciesPage = (e) => {
     e.preventDefault();
-    // FIXME handel null value
     if (selectedOption) {
       // redirect To Pharmacies Page
       window.location.href = `/pharmacies/${selectedOption.value}`;
@@ -20,12 +27,11 @@ export default function SearchWrap(params) {
       alert("Please select a City !!");
     }
   };
-
   // to fix: Warning: Prop `id` did not match. Server: "react-select-2-live-region" Client: "react-select-3-live-region"
   const id = useId();
 
-  return (
-    <SearchContainer>
+  const children = (
+    <InputContainer modal={modal}>
       <div className="input-desc" title="locate Me!">
         <Image
           className="static"
@@ -60,6 +66,23 @@ export default function SearchWrap(params) {
           />
         </button>
       </form>
-    </SearchContainer>
+    </InputContainer>
   );
+  if (modal) {
+    return (
+      <SearchContainerModal
+        className={`${visible ? "visible" : ""}`}
+        children={children}
+      ></SearchContainerModal>
+    );
+  } else if (!modal) {
+    return (
+      <SearchContainer
+        className="flex-center"
+        children={children}
+      ></SearchContainer>
+    );
+  } else {
+    return;
+  }
 }

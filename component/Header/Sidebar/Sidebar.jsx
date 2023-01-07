@@ -14,22 +14,45 @@ function SideBar(props) {
         <ul className="sidebar-links">
           <li className="sidebar-link ">
             <Link href="/">
-            <Image alt="home page icon" src={homeIcon} width={30} height={30} /> <span>Home</span>
+              <Image
+                alt="home page icon"
+                src={homeIcon}
+                width={30}
+                height={30}
+              />
+              <span>Home</span>
+            </Link>
+          </li>
+          <li className="sidebar-link">
+            <Link
+              href="#"
+              onClick={() => {
+                props.func.toggleModal();
+              }}
+            >
+              <Image alt="searchIcon" src={searchIcon} width={30} height={30} />
+              <span>search</span>
             </Link>
           </li>
           <li className="sidebar-link">
             <Link href="/">
-            <Image alt="searchIcon" src={searchIcon} width={30} height={30} /><span>search</span>
+              <Image
+                alt="aboutUsIcon"
+                src={aboutUsIcon}
+                width={30}
+                height={30}
+              />{" "}
+              <span>About</span>
             </Link>
           </li>
           <li className="sidebar-link">
             <Link href="/">
-            <Image alt="aboutUsIcon" src={aboutUsIcon} width={30} height={30} /> <span>About</span>
-            </Link>
-          </li>
-          <li className="sidebar-link">
-            <Link href="/">
-            <Image alt="contactIcon" src={contactIcon} width={30} height={30} />
+              <Image
+                alt="contactIcon"
+                src={contactIcon}
+                width={30}
+                height={30}
+              />
               <span>Contact</span>
             </Link>
           </li>

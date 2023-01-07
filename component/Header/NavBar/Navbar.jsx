@@ -1,5 +1,11 @@
 "use client";
-import { NavBar, LogoContainer, Navlinks, Navlink,NavToggle } from "./navBar.styled";
+import {
+  NavBar,
+  LogoContainer,
+  Navlinks,
+  Navlink,
+  NavToggle,
+} from "./navBar.styled";
 import Image from "next/image";
 import login from "./login.svg";
 
@@ -16,10 +22,16 @@ function Navbar(props) {
       </LogoContainer>
       <Navlinks>
         <Navlink href="/">Home</Navlink>
-        <Navlink href="/">Search</Navlink>
+        <button
+          onClick={() => {
+            props.func.toggleModal();
+          }}
+        >
+          Search
+        </button>
         <Navlink href="/">About</Navlink>
         <Navlink href="/">Contact</Navlink>
-        <Navlink type="auth"  href="/" title="login">
+        <Navlink type="auth" href="/" title="login">
           <Image alt="login" src={login} width={23} height={13} />
           Sign in
         </Navlink>

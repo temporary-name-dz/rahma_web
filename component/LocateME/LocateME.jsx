@@ -4,8 +4,8 @@
 
 import Image from "next/image";
 import { LocateMeBtn } from "./locateMe.styled";
-import accuracyIconStatic from "../../public/icons8-accuracy.svg";
-import accuracyIcon from "../../public/icons8-accuracy.gif";
+import accuracyIconStatic from "@public/icons8-accuracy.svg";
+import accuracyIcon from "@public/icons8-accuracy.gif";
 
 // async function getLocation() {
 //   return;

@@ -30,6 +30,7 @@ export default function PharmaciesList({ city }) {
     return (
       <ListWrap className="flex-center">
         <h1>
+          {/* TODO: if user click's the span the SEARCH WRAP DISPLAYS " &.visible "*/}
           Results For :<span> {commune}</span>
         </h1>
         <p>NO PHARMACIES FOUND...(-_-)</p>

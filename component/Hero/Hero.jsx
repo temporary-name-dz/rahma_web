@@ -3,19 +3,21 @@ import Image from "next/image";
 import herobg from "./22.jpg";
 import hospitalIcon from "./icons8-hospital-96.png";
 import { HeroContainer } from "./hero.styled";
-import SearchWrap from "./SearchWrap/SearchWrap";
+import Overlay from "@common/Overlay";
+import SearchWrap from "@common/SearchWrap";
+
 function Hero(params) {
   return (
     <HeroContainer>
       <Image
-        className="hero-bg"
+        className="hero-bg image "
         alt="hero bg"
         src={herobg}
         width={1910}
         height={670}
       />
       <div className="header">
-        <div className="overlay"></div>
+        <Overlay />
         <Image
           alt="icon"
           className="hero-icon"
@@ -27,7 +29,7 @@ function Hero(params) {
           <h1 className="heading-primary">Rahma pharmacy finder</h1>
           <h6>locate and contact pharmacies on duty easily.</h6>
         </div>
-        <SearchWrap />
+        <SearchWrap key="hero-SearchWrap" modal={false} />
       </div>
     </HeroContainer>
   );
