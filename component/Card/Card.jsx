@@ -16,6 +16,125 @@ import {
   Status,
   Tooltip,
 } from "./Card.styled";
+
+function Header({ ownerId, status }) {
+  return (
+    <CardHeader>
+      {/* FIXME: the width and heght should be set here not css  https://youtu.be/eFzNekhVhmM?t=1487*/}
+      <Image
+        className="card--image grow"
+        alt="Pharmacy Image"
+        src={placeholder}
+        width={800}
+        height={533}
+      />
+      <Avatar className="grow">
+        <Image
+          className="image"
+          alt="Owner Avatar"
+          src={avatar}
+          width={34}
+          height={34}
+        />
+        <Tooltip className="tooltip">
+          {/* TODO: is this used? */}
+          Added By <a href={ownerId}>{ownerId}</a>
+        </Tooltip>
+      </Avatar>
+      <Status isItOpen={status}>{status}</Status>
+    </CardHeader>
+  );
+}
+
+function Body({ pharmacyGoogleMapsLink, name, address }) {
+  return (
+    <CardBody>
+      <a
+        className="name-wrap"
+        target="_blank"
+        rel="noopener noreferrer"
+        href={pharmacyGoogleMapsLink}
+        aria-label={name + "google maps"}
+        title={name + "google maps"}
+      >
+        <h3>{name}</h3>
+        <Image
+          className="img"
+          alt="icon"
+          src={mapIconStatic}
+          width={20}
+          height={20}
+        />
+      </a>
+      <a
+        className="location-wrap"
+        target="_blank"
+        rel="noopener noreferrer"
+        href={pharmacyGoogleMapsLink}
+        aria-label={name + "google maps"}
+        title={name + "google maps"}
+      >
+        <Image
+          className="img"
+          alt="icon"
+          src={locationIconOrangeStatic}
+          width={15}
+          height={15}
+        />
+        <p>{address}</p>
+      </a>
+    </CardBody>
+  );
+}
+
+function CTA({ name, hour, days, pharmacyGoogleMapsLink, directionLink }) {
+  <CardCTA>
+    <div className="hours">
+      <span>
+        {days}
+        <strong>{hour}</strong>
+      </span>
+    </div>
+    <div className="cta-wrap">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={name + "'s maps directions"}
+        title={name + "maps directions"}
+        href={directionLink}
+      >
+        <Image
+          className="img"
+          alt="direction"
+          src={directionsIconStatic}
+          width={15}
+          height={15}
+          title={name + "maps directions"}
+          href={directionLink}
+        />
+        <CtaTooltip className="tooltip">find directions</CtaTooltip>
+      </a>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href={pharmacyGoogleMapsLink}
+        aria-label={name + "google maps"}
+        title={name + "google maps"}
+      >
+        <Image
+          className="img"
+          alt="place"
+          src={locationIconStatic}
+          width={15}
+          height={15}
+          aria-label={name + "google maps"}
+          title={name + "google maps"}
+        />
+        <CtaTooltip className="tooltip">on the map</CtaTooltip>
+      </a>
+    </div>
+  </CardCTA>;
+}
 export default function Card({ data, city }) {
   const {
     pharmID,
@@ -53,111 +172,20 @@ export default function Card({ data, city }) {
   //
   return (
     <CardWrap key={pharmID}>
-      <CardHeader>
-        <Image
-          className="card--image grow"
-          alt="Pharmacy Image"
-          src={placeholder}
-          width={800}
-          height={533}
-        />
-        <Avatar className="grow">
-          <Image
-            className="image"
-            alt="Owner Avatar"
-            src={avatar}
-            width={34}
-            height={34}
-          />
-          <Tooltip className="tooltip">
-            {/* TODO: is this used? */}
-            Added By <a href={ownerId}>{ownerId}</a>
-          </Tooltip>
-        </Avatar>
-        <Status isItOpen={status}>{status}</Status>
-      </CardHeader>
-      <CardBody>
-        <a
-          className="name-wrap"
-          target="_blank"
-          rel="noopener noreferrer"
-          href={pharmacyGoogleMapsLink}
-          aria-label={name + "google maps"}
-          title={name + "google maps"}
-        >
-          <h3>{name}</h3>
-          <Image
-            className="img"
-            alt="icon"
-            src={mapIconStatic}
-            width={20}
-            height={20}
-          />
-        </a>
-        <a
-          className="location-wrap"
-          target="_blank"
-          rel="noopener noreferrer"
-          href={pharmacyGoogleMapsLink}
-          aria-label={name + "google maps"}
-          title={name + "google maps"}
-        >
-          <Image
-            className="img"
-            alt="icon"
-            src={locationIconOrangeStatic}
-            width={15}
-            height={15}
-          />
-          <p>{address}</p>
-        </a>
-      </CardBody>
-      <CardCTA>
-        <div className="hours">
-          <span>
-            {days}
-            <strong>{hour}</strong>
-          </span>
-        </div>
-        <div className="cta-wrap">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={name + "'s maps directions"}
-            title={name + "maps directions"}
-            href={directionLink}
-          >
-            <Image
-              className="img"
-              alt="direction"
-              src={directionsIconStatic}
-              width={15}
-              height={15}
-              title={name + "maps directions"}
-              href={directionLink}
-            />
-            <CtaTooltip className="tooltip">find directions</CtaTooltip>
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={pharmacyGoogleMapsLink}
-            aria-label={name + "google maps"}
-            title={name + "google maps"}
-          >
-            <Image
-              className="img"
-              alt="place"
-              src={locationIconStatic}
-              width={15}
-              height={15}
-              aria-label={name + "google maps"}
-              title={name + "google maps"}
-            />
-            <CtaTooltip className="tooltip">on the map</CtaTooltip>
-          </a>
-        </div>
-      </CardCTA>
+      <Header ownerId={ownerId} status={status} />
+      <Body
+        name={name}
+        address={address}
+        pharmacyGoogleMapsLink={pharmacyGoogleMapsLink}
+      />
+      <CTA
+        name={name}
+        hour={hour}
+        days={days}
+        pharmacyGoogleMapsLink={pharmacyGoogleMapsLink}
+        directionLink={directionLink}
+      />
+
       {status && status != "Open" ? <Overlay /> : null}
     </CardWrap>
   );

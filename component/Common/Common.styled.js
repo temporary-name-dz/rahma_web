@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "styled-components";
 // Overlay Start
 const Overlay = styled.div`
@@ -156,10 +158,79 @@ const InputContainer = styled.article`
 `;
 // SearchWrap End
 
+// footer start
+// inspired by :https://www.joshwcomeau.com/
+// TODO : copy responsive behavior
+const FooterWrapper = styled.footer`
+  display: grid;
+  grid-template-areas:
+    ". logo  navigation links ."
+    ". copyrights  navigation links .";
+
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white);
+  text-decoration: none;
+
+  padding: 3rem 0;
+
+  background: linear-gradient(
+    0deg,
+    var(--color-homepage-light),
+    var(--color-homepage-dark)
+  );
+
+  & a {
+    cursor: pointer;
+    transition: var(--transition-2);
+    &:hover {
+      color: var(--colors-accent-40);
+      transform: translateY(-3px);
+    }
+  }
+  p {
+    color: var(--clr-grey-6);
+  }
+`;
+const LogoBox = styled.div`
+  grid-area: logo;
+`;
+const FooterNavigation = styled.div`
+  grid-area: navigation;
+  justify-self: end;
+
+  /* to truncate the links with long name */
+  a {
+    max-width: 71px;
+  }
+`;
+const FooterCopyright = styled.div`
+  grid-area: copyrights;
+  align-self: end;
+  row-gap: 5px;
+
+  color: var(--clr-grey-6);
+  font-size: 13px;
+  a:hover {
+    font-size: 14px;
+  }
+`;
+const FooterLinks = styled.div`
+  grid-area: links;
+  justify-self: end;
+`;
+
+// footer end
+
 export {
   Overlay,
   PaginateWrapper,
   SearchContainer,
   SearchContainerModal,
   InputContainer,
+  FooterWrapper,
+  LogoBox,
+  FooterNavigation,
+  FooterCopyright,
+  FooterLinks,
 };

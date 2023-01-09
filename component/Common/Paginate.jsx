@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PaginateWrapper as Wrapper } from "./Common.styled";
+import { PaginateWrapper as BtnGroup } from "./Common.styled";
 // import { useGlobaleContext } from "../context";
 
 export default function Paginate({
@@ -59,15 +59,14 @@ export default function Paginate({
         </button>
       );
     }
-
     setPageBtns(tmp);
   }, [itemsList, page, showPerPage]);
 
   return (
-    <Wrapper>
+    <BtnGroup>
       <button onClick={prevPage}>&lt;</button>
       {pageBtns}
       <button onClick={nextPage}>&gt;</button>
-    </Wrapper>
+    </BtnGroup>
   );
 }

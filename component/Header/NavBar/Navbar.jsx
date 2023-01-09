@@ -6,9 +6,21 @@ import {
   Navlink,
   NavToggle,
 } from "./navBar.styled";
+import navLinks from "@public/navigation.json";
 import Image from "next/image";
 import login from "./login.svg";
 
+function SearchBtn({ toggleFnc }) {
+  return (
+    <button
+      onClick={() => {
+        props.func.toggleModal();
+      }}
+    >
+      Search
+    </button>
+  );
+}
 function Navbar(props) {
   return (
     <NavBar>
@@ -21,25 +33,44 @@ function Navbar(props) {
         />
       </LogoContainer>
       <Navlinks>
-        <Navlink href="/">Home</Navlink>
-        <button
-          onClick={() => {
-            props.func.toggleModal();
-          }}
-        >
-          Search
-        </button>
-        <Navlink href="/">About</Navlink>
-        <Navlink href="/">Contact</Navlink>
-        <Navlink type="auth" href="/" title="login">
-          <Image alt="login" src={login} width={23} height={13} />
-          Sign in
-        </Navlink>
-        <Navlink type="primary" href="/">
-          Add your pharm +
-        </Navlink>
+        {/* FIXME :Warning: Each child in a list should have a unique "key" prop. */}
+        {navLinks.map((navlink, index) => {
+          const { name, href } = navlink;
+
+          if (index === 0) {
+            return (
+              <>
+                <Navlink key={index + href + "_navbar"} href={href}>
+                  {name}
+                </Navlink>
+                <SearchBtn
+                  key={index + "search" + "_navbar"}
+                  toggleFnc={props.func.toggleModal}
+                />
+              </>
+            );
+          }
+          // FIXME add type prop to nav json
+          if (name.includes("add your pharm")) {
+            return (
+              <Navlink
+                key={index + href + "_navbar"}
+                type="primary"
+                href={href}
+              >
+                {name}
+              </Navlink>
+            );
+          }
+          return (
+            <Navlink key={index + href + "_navbar"} href={href}>
+              {name}
+            </Navlink>
+          );
+        })}
       </Navlinks>
       <NavToggle
+        key={"wtfffffff"}
         aria-label="menu"
         type="button"
         className={props.isMenuOpen ? "open" : ""}

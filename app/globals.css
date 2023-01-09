@@ -61,9 +61,18 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.flex-column {
+  display: flex;
   flex-direction: column;
+  row-gap: 1rem;
 }
 
+.truncate {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 .image {
   width: 100%;
   height: 100%;
@@ -195,6 +204,9 @@ li {
   --colors-accent-700: #2c5282;
   --colors-accent-800: #2a4365;
   --colors-accent-900: #1a365d;
+
+  --color-homepage-light: hsla(200deg, 100%, 85%, 0);
+  --color-homepage-dark: hsla(200deg, 100%, 85%, 0.1);
 }
 
 .lds-ripple {
