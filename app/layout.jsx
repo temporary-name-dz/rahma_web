@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "../component/Header/Header";
 import RootStyleRegistry from "./RootStyleRegistry";
 import Footer from "../component/Common/Footer";
+import Providers from "./providers";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -12,11 +13,13 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <RootStyleRegistry>
-          <div>
-            <Header />
-            <main>{children}</main>
-            <Footer />
-          </div>
+          <Providers>
+            <div>
+              <Header />
+              <main>{children}</main>
+              <Footer />
+            </div>
+          </Providers>
         </RootStyleRegistry>
       </body>
     </html>

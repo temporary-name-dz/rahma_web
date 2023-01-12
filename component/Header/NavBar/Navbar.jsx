@@ -8,20 +8,41 @@ import {
 } from "./navBar.styled";
 import navLinks from "@public/navigation.json";
 import Image from "next/image";
-import login from "./login.svg";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 function SearchBtn({ toggleFnc }) {
   return (
     <button
       onClick={() => {
-        props.func.toggleModal();
+        toggleFnc();
       }}
     >
       Search
     </button>
   );
 }
+
+function AuthActions({ session }) {
+  // TODO add the avatar
+  // ? Avatar icon https://vercel.com/design/avatar
+  // ? avatar component example  https://youtu.be/IF6k0uZuypA
+  if (session) {
+    return (
+      <>
+        Signed in as {session.user.email} <br />
+        <button onClick={() => signOut()}>Sign out</button>
+      </>
+    );
+  }
+  return (
+    <>
+      <button onClick={() => signIn()}>Sign in</button>
+    </>
+  );
+}
 function Navbar(props) {
+  const { data: session } = useSession();
+
   return (
     <NavBar>
       <LogoContainer>
@@ -68,9 +89,10 @@ function Navbar(props) {
             </Navlink>
           );
         })}
+        <AuthActions session={session} />
       </Navlinks>
       <NavToggle
-        key={"wtfffffff"}
+        key="asfdasdfas"
         aria-label="menu"
         type="button"
         className={props.isMenuOpen ? "open" : ""}
