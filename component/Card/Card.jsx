@@ -149,14 +149,9 @@ export default function Card({ data, city }) {
   // TODO: format closing time like google does (closing soon 9pm, closed 30 min ago)
   const [days, hour] = hours.split(",");
   // TODO get the OWNER data
-  // ask whether to do the in this component or inside the parent (Pharmacies list)
-
-  // TODO: direction link
-  // docs link : https://developers.google.com/maps/documentation/urls/get-started#directions-action
-  // travelmode : driving, walking , transit
-  // https://www.google.com/maps/dir/?api=1&origin=34.95238737940395,-1.3723375517557257&destination=34.94867637148608,-1.3711359221871975
-  // &travelmode=driving&map_action=map&zoom=15
-  // latitude,longitude
+  //? is it better to format the data & generate direction and google maps link in the parent
+  //? and  send only data to this component
+  //? i guess if we used this component in other parent then the pharmacies list a refactor is needed
 
   // TODO: after adding the global stat if the users didn't clicked locate me in the home page this component will ask for location
   const locateME = [34.95238737940395, -1.3723375517557257];
@@ -190,3 +185,10 @@ export default function Card({ data, city }) {
     </CardWrap>
   );
 }
+
+//  direction link
+// docs link : https://developers.google.com/maps/documentation/urls/get-started#directions-action
+// travelmode : driving, walking , transit
+// https://www.google.com/maps/dir/?api=1&origin=34.95238737940395,-1.3723375517557257&destination=34.94867637148608,-1.3711359221871975
+// &travelmode=driving&map_action=map&zoom=15
+// latitude,longitude

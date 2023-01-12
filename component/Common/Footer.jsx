@@ -4,19 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   FooterCopyright,
+  FooterLinks,
   FooterNavigation,
   FooterWrapper,
-  FooterLinks,
   LogoBox,
 } from "./Common.styled";
-function ExternalLink({ href, name }) {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      {name}
-    </a>
-  );
-}
-
+import ExternaLink from "@common/ExternaLink";
 function HearthIcon() {
   return (
     <svg
@@ -33,20 +26,7 @@ function HearthIcon() {
     </svg>
   );
 }
-function VercelIcon() {
-  return (
-    <svg
-      role="img"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      width={18}
-      height={18}
-    >
-      <title>Vercel</title>
-      <path d="M24 22.525H0l12-21.05 12 21.05z" />
-    </svg>
-  );
-}
+
 function Logo() {
   return (
     <LogoBox>
@@ -60,20 +40,19 @@ function CopyRights() {
   return (
     <FooterCopyright className="flex-column">
       <div>
-        Made with by&nbsp;
-        <HearthIcon />
-        &nbsp;
-        <ExternalLink
+        Made with &nbsp;
+        <HearthIcon /> &nbsp; by &nbsp;
+        <ExternaLink
           href="https://github.com/abdelghanyMh"
           name="@abdelghanyMh"
         />
       </div>
       <div>
-        icons: <ExternalLink href="https://icons8.com/" name="icons8" />
+        icons: <ExternaLink href="https://icons8.com/" name="icons8" />
       </div>
       <div>
-        Hosted on <ExternalLink href="https://vercel.com/" name="vercel" />
-        <VercelIcon />
+        Hosted on &nbsp;
+        <ExternaLink href="https://vercel.com/" name="&#9650; &nbsp;vercel" />
       </div>
     </FooterCopyright>
   );
@@ -99,7 +78,7 @@ function Links() {
       <p>Links</p>
       {externaLinks.map(({ href, name }, index) => {
         return (
-          <ExternalLink key={name + index + "footer"} href={href} name={name} />
+          <ExternaLink key={name + index + "footer"} href={href} name={name} />
         );
       })}
     </FooterLinks>

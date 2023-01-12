@@ -1,6 +1,6 @@
 "use client";
 import { PharmaciesWrap } from "./page.styled";
-import PharmaciesList from "../../component/PharmaciesList/PharmaciesList";
+import PharmaciesList from "@component/PharmaciesList/PharmaciesList";
 
 export default function PharmaciesPage({ params }) {
   return (

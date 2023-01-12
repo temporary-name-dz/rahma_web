@@ -4,15 +4,15 @@ import ListPaginate from "../Common/Paginate";
 import { ListContent, ListTitle, ListWrap } from "./pharmaciesList.styled";
 import listPharm from "./pharmList";
 
-async function getPharmacies(city) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${city}`, {
-    next: { revalidate: 10 }, // this tells fetch to regenerate page on server if it is older then 10 seconds !!!
-  });
+//TODO: lazy component loading https://youtu.be/b0IZo2Aho9Y?list=PL0vfts4VzfNgUUEtEjxDVfh4iocVR3qIb&t=330
+// async function getPharmacies(city) {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${city}`, {
+//     next: { revalidate: 10 }, // this tells fetch to regenerate page on server if it is older then 10 seconds !!!
+//   });
 
-  const data = res.json();
-  return data;
-}
-// TODO: get user's current location. lan & lat to add them in &destination=
+//   const data = res.json();
+//   return data;
+// }
 
 export default function PharmaciesList({ city }) {
   // const Pharmacies = await getPharmacies(params.city);
@@ -22,7 +22,7 @@ export default function PharmaciesList({ city }) {
   const [list, setList] = useState(listPharm);
   const [paginatedList, setPaginatedList] = useState(list);
 
-  // TODO: decide if we give the user the right to set how much we show pharmacies per page
+  //? Should we  give the user the right to set how much we show pharmacies per page
   // TODO: Add me to the global state
   const perPage = 6;
 

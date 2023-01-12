@@ -5,8 +5,9 @@ import hospitalIcon from "./icons8-hospital-96.png";
 import { HeroContainer } from "./hero.styled";
 import Overlay from "@common/Overlay";
 import SearchWrap from "@common/SearchWrap";
+//? should we use curves ?  https://youtu.be/lPJVi797Uy0
 
-function Hero(params) {
+function Hero() {
   return (
     <HeroContainer>
       <Image
